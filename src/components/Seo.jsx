@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 // this updates the existing head tags in place, so there is exactly one of each.
 // This drives the browser tab and what Google — which runs JavaScript — sees.
 // Link scrapers that don't run JS fall back to the defaults baked into index.html.
-const DEFAULT_TITLE = 'Uncoached | Daily Tools for Personal Growth';
-const DEFAULT_DESC = 'Uncoached is a quiet, self-guided space for turning insight from therapy and coaching into real life — audio breaths, guided shifts, prompts, and more.';
+const DEFAULT_TITLE = 'Uncoached | In-the-Moment Support';
+const DEFAULT_DESC = "Work through real-life situations, understand what you're experiencing and put what you learn into practice with tools informed by therapists, coaches and practitioners.";
 
 const setMeta = (selector, attr, value) => {
     let el = document.head.querySelector(selector);
