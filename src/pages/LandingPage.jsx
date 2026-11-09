@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection'
 import IntegrationSection from '../components/IntegrationSection'
 import DeeperWorkSection from '../components/DeeperWorkSection'
 import ServicesSection from '../components/ServicesSection'
+import ThoughtfulResourcesSection from '../components/ThoughtfulResourcesSection'
 import MeetFieldSection from '../components/MeetFieldSection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import GiftSection from '../components/GiftSection'
@@ -19,6 +20,7 @@ function LandingPage() {
             <IntegrationSection />
             <DeeperWorkSection />
             <ServicesSection />
+            <ThoughtfulResourcesSection />
             <MeetFieldSection />
             {/* <TestimonialsSection /> */}
             <GiftSection />

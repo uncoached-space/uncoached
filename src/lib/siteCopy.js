@@ -44,6 +44,16 @@ export const SITE_COPY_FIELDS = [
     { key: 'home.services.cta', group: "Home — What You'll Find Inside", label: 'Button', text: 'Unlock Everything' },
     { key: 'home.services.footnote', group: "Home — What You'll Find Inside", label: 'Footnote', text: 'Designed to complement therapy and coaching between the sessions, not replace it.' },
 
+    // Thoughtful Resources
+    { key: 'home.resources.title', group: 'Home — Thoughtful Resources', label: 'Section heading', multiline: true, text: 'Thoughtful Resources\nfor Real-Life Moments' },
+    { key: 'home.resources.intro', group: 'Home — Thoughtful Resources', label: 'Intro paragraph', multiline: true, text: 'Our resources are built by Uncoached, informed by relevant research, professional expertise, and a range of reflective and spiritual perspectives, then shaped into practical support you can actually use.' },
+    { key: 'home.resources.card1_title', group: 'Home — Thoughtful Resources', label: 'Highlight 1 title', text: 'The Science Behind It' },
+    { key: 'home.resources.card1_body', group: 'Home — Thoughtful Resources', label: 'Highlight 1 text', multiline: true, text: 'Explore relevant research and what it tells us.' },
+    { key: 'home.resources.card2_title', group: 'Home — Thoughtful Resources', label: 'Highlight 2 title', text: 'Another Perspective' },
+    { key: 'home.resources.card2_body', group: 'Home — Thoughtful Resources', label: 'Highlight 2 text', multiline: true, text: 'Explore ideas from spiritual writers, teachers, and traditions.' },
+    { key: 'home.resources.card3_title', group: 'Home — Thoughtful Resources', label: 'Highlight 3 title', text: 'Take It Further' },
+    { key: 'home.resources.card3_body', group: 'Home — Thoughtful Resources', label: 'Highlight 3 text', multiline: true, text: 'Practical tools to use long after the moment passes.' },
+
     // The eight cards in the carousel. Titles support *stars* for a sage italic
     // highlight — that is what makes the "for" in Af*for*mations stand out.
     { key: 'home.services.card1_title', group: "Home — What You'll Find Inside", label: 'Card 1 title', text: "Field" },
