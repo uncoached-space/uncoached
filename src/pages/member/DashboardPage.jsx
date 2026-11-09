@@ -4,6 +4,17 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { useCopy } from '../../context/SiteCopyContext';
 import { emphasise, plain } from '../../lib/emphasise';
+import { searchPortal, searchableText, linesOfUseWhen } from '../../lib/portalSearch';
+
+const PORTAL_SECTIONS = [
+    { label: 'Field', type: 'Tool', link: '/dashboard/field', keywords: 'chat support reflect talk' },
+    { label: 'Audio Breaths', type: 'Tool', link: '/dashboard/audio-breaths', keywords: 'breathe breathing nervous system calm' },
+    { label: 'Guided Shifts', type: 'Tool', link: '/dashboard/guided-shifts', keywords: 'reset state regulate' },
+    { label: 'Pocket Prompts', type: 'Tool', link: '/dashboard/pocket-prompts', keywords: 'questions reflection' },
+    { label: 'Clarity Cards', type: 'Tool', link: '/dashboard/clarity-cards', keywords: 'journal journaling cards' },
+    { label: 'Afformations', type: 'Tool', link: '/dashboard/afformations', keywords: 'affirmations affirmation questions' },
+    { label: 'Voice Notes', type: 'Tool', link: '/dashboard/voice-notes', keywords: 'audio messages identity' },
+];
 
 const DashboardPage = () => {
     const { user, signOut } = useAuth();
@@ -17,54 +28,47 @@ const DashboardPage = () => {
     // ---- Portal search ----
     const [query, setQuery] = useState('');
     const [searchFocused, setSearchFocused] = useState(false);
-    const [searchIndex, setSearchIndex] = useState([]);
+    const [searchOpened, setSearchOpened] = useState(false);
+    const [searchIndex, setSearchIndex] = useState(PORTAL_SECTIONS);
+    const [searchReady, setSearchReady] = useState(false);
 
     useEffect(() => {
-        // Sections/tools are always searchable, even offline; content is added below.
-        const sections = [
-            { label: 'Field', type: 'Tool', link: '/dashboard/field', keywords: 'chat support reflect talk' },
-            { label: 'Audio Breaths', type: 'Tool', link: '/dashboard/audio-breaths', keywords: 'breathe breathing nervous system calm' },
-            { label: 'Guided Shifts', type: 'Tool', link: '/dashboard/guided-shifts', keywords: 'reset state regulate' },
-            { label: 'Pocket Prompts', type: 'Tool', link: '/dashboard/pocket-prompts', keywords: 'questions reflection' },
-            { label: 'Clarity Cards', type: 'Tool', link: '/dashboard/clarity-cards', keywords: 'journal journaling cards' },
-            { label: 'Afformations', type: 'Tool', link: '/dashboard/afformations', keywords: 'affirmations affirmation questions' },
-            { label: 'Voice Notes', type: 'Tool', link: '/dashboard/voice-notes', keywords: 'audio messages identity' },
-        ];
-
+        // The content text is much bigger than the titles were, so it only
+        // loads once a member actually clicks into the search box.
+        if (!searchOpened) return undefined;
         let cancelled = false;
         const buildIndex = async () => {
-            const entries = [...sections];
+            const entries = [...PORTAL_SECTIONS];
             try {
                 const [ab, gs, cc, pp, vn, af] = await Promise.all([
-                    supabase.from('audio_breaths').select('id,title'),
-                    supabase.from('guided_shifts').select('id,title').eq('is_active', true),
-                    supabase.from('clarity_cards').select('id,title').eq('is_active', true),
-                    supabase.from('pocket_prompts').select('id,title').eq('is_active', true),
-                    supabase.from('voice_notes').select('id,title').eq('is_active', true),
-                    supabase.from('affirmations').select('id,text').eq('is_active', true),
+                    supabase.from('audio_breaths').select('id,title,intro,description,approach,use_when,science_text,science_source,spiritual_text,spiritual_source'),
+                    supabase.from('guided_shifts').select('id,title,intro,description,approach,use_when,field_integration_prompt,science_text,science_source,spiritual_text,spiritual_source').eq('is_active', true),
+                    supabase.from('clarity_cards').select('id,title,description').eq('is_active', true),
+                    // Not content_premium: members who haven't bought a prompt must not be able to read it through search.
+                    supabase.from('pocket_prompts').select('id,title,when_to_use,purpose,example_scenario,what_free_offers,what_premium_offers,content_free').eq('is_active', true),
+                    supabase.from('voice_notes').select('id,title,description').eq('is_active', true),
+                    supabase.from('afformation_cards').select('id,title,tags,afformation_questions(text)').eq('is_active', true),
                 ]);
-                (ab.data || []).forEach(r => entries.push({ label: r.title, type: 'Audio Breath', link: `/dashboard/audio-breaths/${r.id}` }));
-                (gs.data || []).forEach(r => entries.push({ label: r.title, type: 'Guided Shift', link: `/dashboard/guided-shifts/${r.id}` }));
-                (cc.data || []).forEach(r => entries.push({ label: r.title, type: 'Clarity Card', link: `/dashboard/clarity-cards/${r.id}` }));
-                (pp.data || []).forEach(r => entries.push({ label: r.title, type: 'Pocket Prompt', link: '/dashboard/pocket-prompts' }));
-                (vn.data || []).forEach(r => entries.push({ label: r.title, type: 'Voice Note', link: '/dashboard/voice-notes' }));
-                (af.data || []).forEach(r => entries.push({ label: r.text, type: 'Afformation', link: '/dashboard/afformations' }));
+                const bodyOf = (r) => searchableText(r.intro, r.description, r.approach, linesOfUseWhen(r.use_when), r.field_integration_prompt, r.science_text, r.science_source, r.spiritual_text, r.spiritual_source);
+                (ab.data || []).forEach(r => entries.push({ label: r.title, type: 'Audio Breath', link: `/dashboard/audio-breaths/${r.id}`, text: bodyOf(r) }));
+                (gs.data || []).forEach(r => entries.push({ label: r.title, type: 'Guided Shift', link: `/dashboard/guided-shifts/${r.id}`, text: bodyOf(r) }));
+                (cc.data || []).forEach(r => entries.push({ label: r.title, type: 'Clarity Card', link: `/dashboard/clarity-cards/${r.id}`, text: searchableText(r.description) }));
+                (pp.data || []).forEach(r => entries.push({ label: r.title, type: 'Pocket Prompt', link: '/dashboard/pocket-prompts', text: searchableText(r.when_to_use, r.purpose, r.example_scenario, r.what_free_offers, r.what_premium_offers, r.content_free) }));
+                (vn.data || []).forEach(r => entries.push({ label: r.title, type: 'Voice Note', link: '/dashboard/voice-notes', text: searchableText(r.description) }));
+                (af.data || []).forEach(r => entries.push({ label: r.title, type: 'Afformation', link: '/dashboard/afformations', text: searchableText(r.tags, (r.afformation_questions || []).map(q => q.text)) }));
             } catch (err) {
                 console.error('Search index build error:', err);
             }
-            if (!cancelled) setSearchIndex(entries);
+            if (!cancelled) {
+                setSearchIndex(entries);
+                setSearchReady(true);
+            }
         };
         buildIndex();
         return () => { cancelled = true; };
-    }, []);
+    }, [searchOpened]);
 
-    const searchResults = useMemo(() => {
-        const q = query.trim().toLowerCase();
-        if (!q) return [];
-        return searchIndex
-            .filter(e => (e.label || '').toLowerCase().includes(q) || (e.keywords || '').toLowerCase().includes(q))
-            .slice(0, 8);
-    }, [query, searchIndex]);
+    const searchResults = useMemo(() => searchPortal(searchIndex, query), [query, searchIndex]);
 
     // Wording comes from Website Text > Members Area, so Johanna can reword the
     // tiles herself. Icons, links and colours stay in code.
@@ -152,7 +156,7 @@ const DashboardPage = () => {
                             type="text"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
-                            onFocus={() => setSearchFocused(true)}
+                            onFocus={() => { setSearchFocused(true); setSearchOpened(true); }}
                             onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
                             placeholder={copy('dashboard.search_placeholder')}
                             className="w-full px-6 py-4 pl-12 bg-white/80 backdrop-blur-sm border border-clay/30 rounded-full focus:outline-none focus:ring-2 focus:ring-sage/50 text-text-dark"
@@ -170,7 +174,7 @@ const DashboardPage = () => {
                     {searchFocused && query.trim() && (
                         <div className="absolute z-30 mt-2 w-full bg-white rounded-2xl shadow-lg border border-clay/20 overflow-hidden max-h-80 overflow-y-auto text-left">
                             {searchResults.length === 0 ? (
-                                <p className="px-5 py-4 text-sm text-text-muted">No matches for “{query.trim()}”.</p>
+                                <p className="px-5 py-4 text-sm text-text-muted">{searchReady ? `No matches for “${query.trim()}”.` : 'Searching…'}</p>
                             ) : (
                                 searchResults.map((r, i) => (
                                     <Link
@@ -179,7 +183,16 @@ const DashboardPage = () => {
                                         onMouseDown={() => setQuery('')}
                                         className="flex items-center justify-between gap-3 px-5 py-3 hover:bg-bone/70 transition-colors border-b border-clay/10 last:border-0"
                                     >
-                                        <span className="text-text-dark text-sm truncate">{r.label}</span>
+                                        <span className="min-w-0">
+                                            <span className="block text-text-dark text-sm truncate">{r.label}</span>
+                                            {r.snippet && (
+                                                <span className="block text-text-muted text-xs leading-relaxed mt-0.5">
+                                                    {r.snippet.map((part, p) => (part.hit
+                                                        ? <span key={p} className="font-semibold text-text-dark">{part.text}</span>
+                                                        : part.text))}
+                                                </span>
+                                            )}
+                                        </span>
                                         <span className="text-[10px] uppercase tracking-wider text-sage bg-sage/10 px-2 py-1 rounded-full flex-shrink-0">{r.type}</span>
                                     </Link>
                                 ))
