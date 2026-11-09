@@ -1,4 +1,15 @@
 {
+    "headers": [
+        {
+            "source": "/practitioners",
+            "headers": [
+                {
+                    "key": "X-Robots-Tag",
+                    "value": "noindex"
+                }
+            ]
+        }
+    ],
     "rewrites": [
         {
             "source": "/((?!api/).*)",

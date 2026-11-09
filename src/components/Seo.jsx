@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 // This drives the browser tab and what Google — which runs JavaScript — sees.
 // Link scrapers that don't run JS fall back to the defaults baked into index.html.
 const DEFAULT_TITLE = 'Uncoached | In-the-Moment Support';
-const DEFAULT_DESC = "Work through real-life situations, understand what you're experiencing and put what you learn into practice with tools informed by therapists, coaches and practitioners.";
+const DEFAULT_DESC = "Work through real-life situations with AI-assisted reflection, human-guided audio, and practical tools to understand what you're experiencing and figure out what might help next.";
 
 const setMeta = (selector, attr, value) => {
     let el = document.head.querySelector(selector);
