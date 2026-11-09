@@ -180,7 +180,8 @@ const DashboardPage = () => {
                                     <Link
                                         key={`${r.link}-${i}`}
                                         to={r.link}
-                                        onMouseDown={() => setQuery('')}
+                                        onMouseDown={(e) => e.preventDefault()}
+                                        onClick={() => setQuery('')}
                                         className="flex items-center justify-between gap-3 px-5 py-3 hover:bg-bone/70 transition-colors border-b border-clay/10 last:border-0"
                                     >
                                         <span className="min-w-0">
