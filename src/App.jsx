@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { SiteCopyProvider } from './context/SiteCopyContext'
 import LandingPage from './pages/LandingPage'
@@ -8,7 +8,7 @@ import SignInPage from './pages/SignInPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import AuthConfirmPage from './pages/AuthConfirmPage'
 import PricingPage from './pages/PricingPage'
-import PractitionersPage from './pages/PractitionersPage'
+// import PractitionersPage from './pages/PractitionersPage'
 import GiftPage from './pages/GiftPage'
 import RedeemPage from './pages/RedeemPage'
 import PartnershipPage from './pages/PartnershipPage'
@@ -73,7 +73,11 @@ function App() {
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/auth/confirm" element={<AuthConfirmPage />} />
           <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/practitioners" element={<PractitionersPage />} />
+          {/* Hidden while it holds sample profiles (Johanna, 10 Nov 2026): the
+              address goes to the home page. To bring the page back, restore the
+              import above, this route, and the menu link in Navbar.jsx:
+              <Route path="/practitioners" element={<PractitionersPage />} /> */}
+          <Route path="/practitioners" element={<Navigate to="/" replace />} />
           <Route path="/gift" element={<GiftPage />} />
           <Route path="/redeem" element={<RedeemPage />} />
           {/* Practitioner Partnership — intentionally not linked in the nav;
