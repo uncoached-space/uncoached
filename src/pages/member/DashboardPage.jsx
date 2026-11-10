@@ -224,7 +224,7 @@ const DashboardPage = () => {
                                 <h3 className="font-display text-lg text-text-dark font-semibold mb-1">
                                     {item.title}
                                 </h3>
-                                <p className="text-text-muted text-sm">
+                                <p className="whitespace-pre-line text-text-muted text-sm">
                                     {item.description}
                                 </p>
                             </Link>
@@ -245,7 +245,7 @@ const DashboardPage = () => {
                             <h3 className="font-display text-lg text-text-dark font-semibold mb-1">
                                 {voiceNotes.title}
                             </h3>
-                            <p className="text-text-muted text-sm">
+                            <p className="whitespace-pre-line text-text-muted text-sm">
                                 {voiceNotes.description}
                             </p>
                         </Link>

@@ -218,7 +218,7 @@ const ProfilePage = () => {
                 {/* Membership & Billing */}
                 <div className="w-full mt-6 bg-white p-8 rounded-3xl shadow-sm border border-clay/10">
                     <h2 className="font-display text-2xl text-text-dark mb-2">{copy('profile.billing_heading')}</h2>
-                    <p className="text-sm text-text-muted mb-6 leading-relaxed">
+                    <p className="whitespace-pre-line text-sm text-text-muted mb-6 leading-relaxed">
                         {copy('profile.billing_body')}
                     </p>
                     <Link

@@ -63,7 +63,7 @@ const FieldPage = () => {
                     <p className="text-bone/70 text-xs text-center mt-4">
                         {copy('fieldpage.chat.come_back')}
                     </p>
-                    <p className="text-bone/60 text-xs text-center italic mt-2">
+                    <p className="whitespace-pre-line text-bone/60 text-xs text-center italic mt-2">
                         {copy('fieldpage.chat.disclaimer')}
                     </p>
                 </div>

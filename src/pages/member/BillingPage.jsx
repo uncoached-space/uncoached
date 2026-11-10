@@ -82,7 +82,7 @@ const BillingPage = () => {
 
             <div className="max-w-2xl mx-auto px-6 pt-32 pb-24">
                 <h1 className="font-display text-4xl text-text-dark mb-2">{copy('memberbilling.title')}</h1>
-                <p className="text-text-muted mb-10">{copy('memberbilling.intro')}</p>
+                <p className="whitespace-pre-line text-text-muted mb-10">{copy('memberbilling.intro')}</p>
 
                 {/* Membership summary */}
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-clay/10 mb-6">
@@ -109,7 +109,7 @@ const BillingPage = () => {
                         </dl>
                     ) : (
                         <div>
-                            <p className="text-text-muted mb-5">{copy('memberbilling.none_text')}</p>
+                            <p className="whitespace-pre-line text-text-muted mb-5">{copy('memberbilling.none_text')}</p>
                             <Link
                                 to="/pricing"
                                 className="inline-block px-6 py-3 bg-sage text-bone rounded-full font-medium hover:bg-sage/90 transition-all"
@@ -120,7 +120,7 @@ const BillingPage = () => {
                     )}
 
                     {isGift && (
-                        <p className="mt-6 text-sm text-text-muted leading-relaxed bg-sage/5 border border-sage/20 rounded-xl p-4">
+                        <p className="whitespace-pre-line mt-6 text-sm text-text-muted leading-relaxed bg-sage/5 border border-sage/20 rounded-xl p-4">
                             {copy('memberbilling.gift_note')}
                         </p>
                     )}
@@ -129,7 +129,7 @@ const BillingPage = () => {
                 {/* Invoices & changes via Stripe */}
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-clay/10">
                     <h2 className="font-display text-2xl text-text-dark mb-2">{copy('memberbilling.invoices_heading')}</h2>
-                    <p className="text-sm text-text-muted mb-6 leading-relaxed">
+                    <p className="whitespace-pre-line text-sm text-text-muted mb-6 leading-relaxed">
                         {copy('memberbilling.invoices_body')}
                     </p>
                     {error && <div className="bg-red-50 text-red-600 p-4 rounded-xl mb-4 text-sm text-center">{error}</div>}

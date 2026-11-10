@@ -15,7 +15,7 @@ const NotFoundPage = () => {
                 <div className="text-center max-w-md">
                     <p className="font-display text-6xl text-sage mb-4">{copy('notfound.code')}</p>
                     <h1 className="font-display text-3xl text-text-dark mb-4">{copy('notfound.title')}</h1>
-                    <p className="text-text-muted mb-8">
+                    <p className="whitespace-pre-line text-text-muted mb-8">
                         {copy('notfound.body')}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">

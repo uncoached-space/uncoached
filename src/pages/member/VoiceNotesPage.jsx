@@ -134,15 +134,15 @@ const VoiceNotesPage = () => {
                             {copy('voicenotes.hero.title')}
                         </h1>
 
-                        <h2 className="text-[18px] md:text-[20px] text-[#5E6A65] leading-[1.6] mb-8 font-sans">
+                        <h2 className="whitespace-pre-line text-[18px] md:text-[20px] text-[#5E6A65] leading-[1.6] mb-8 font-sans">
                             {copy('voicenotes.hero.subtitle')}
                         </h2>
 
-                        <p className="text-[16px] text-[#5E6A65] leading-[1.7] max-w-[680px] mx-auto mb-8">
+                        <p className="whitespace-pre-line text-[16px] text-[#5E6A65] leading-[1.7] max-w-[680px] mx-auto mb-8">
                             {copy('voicenotes.hero.body')}
                         </p>
 
-                        <p className="text-[16px] md:text-[17px] text-[#5E6A65] italic leading-relaxed">
+                        <p className="whitespace-pre-line text-[16px] md:text-[17px] text-[#5E6A65] italic leading-relaxed">
                             {copy('voicenotes.hero.note')}
                         </p>
                     </div>

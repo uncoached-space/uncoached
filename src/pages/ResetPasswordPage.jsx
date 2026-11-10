@@ -53,7 +53,7 @@ const ResetPasswordPage = () => {
                 {message && <div className="bg-sage/10 text-sage p-4 rounded-xl mb-6 text-center">{message}</div>}
 
                 {!ready ? (
-                    <p className="text-center text-text-muted">
+                    <p className="whitespace-pre-line text-center text-text-muted">
                         {copy('resetpw.not_ready')}{' '}<Link to="/signin" className="text-sage hover:underline">{copy('resetpw.not_ready_link')}</Link>.
                     </p>
                 ) : (

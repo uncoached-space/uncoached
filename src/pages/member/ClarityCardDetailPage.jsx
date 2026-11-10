@@ -99,7 +99,7 @@ const ClarityCardDetailPage = () => {
                                 {card.content?.body ? (
                                     <div dangerouslySetInnerHTML={{ __html: card.content.body }} />
                                 ) : (
-                                    <p>{copy('carddetail.fallback_body')}</p>
+                                    <p className="whitespace-pre-line">{copy('carddetail.fallback_body')}</p>
                                 )}
                             </div>
 
@@ -108,7 +108,7 @@ const ClarityCardDetailPage = () => {
                                 <h3 className="font-serif text-[20px] text-[#1F2422] mb-3">
                                     {copy('carddetail.print_heading')}
                                 </h3>
-                                <p className="text-[14px] text-[#5E6A65] mb-6">
+                                <p className="whitespace-pre-line text-[14px] text-[#5E6A65] mb-6">
                                     {copy('carddetail.print_body')}
                                 </p>
 

@@ -67,7 +67,7 @@ const SignUpPage = () => {
 
                 {/* Success Message */}
                 {success && (
-                    <div className="bg-sage/10 text-sage p-4 rounded-xl mb-6 text-center">
+                    <div className="whitespace-pre-line bg-sage/10 text-sage p-4 rounded-xl mb-6 text-center">
                         {hasGift ? copy('signup.success_gift') : copy('signup.success_plan')}
                     </div>
                 )}
