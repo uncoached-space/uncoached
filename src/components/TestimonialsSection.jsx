@@ -86,7 +86,7 @@ const TestimonialsSection = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src={import.meta.env.BASE_URL + "bg/S6_ What Others Say - homepage.webp"}
-                    alt="Background"
+                    alt=""
                     className="w-full h-full object-cover"
                 />
                 {/* Soft wash: keeps the photograph as texture while making sure

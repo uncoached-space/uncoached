@@ -38,7 +38,7 @@ const IntegrationSection = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src={import.meta.env.BASE_URL + "bg/S2_ How We Help You Integrate - homepage.webp"}
-                    alt="Background"
+                    alt=""
                     className="w-full h-full object-cover"
                 />
                 {/* Soft wash: keeps the photograph as texture while making sure

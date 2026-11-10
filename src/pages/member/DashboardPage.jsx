@@ -149,16 +149,21 @@ const DashboardPage = () => {
                     {copy('dashboard.subtitle')}
                 </p>
 
-                {/* Search Bar */}
-                <div className="w-full max-w-xl mb-12 relative">
+                {/* Search Bar. The results stay open while the keyboard focus is
+                    anywhere inside this block, so they can be reached with Tab. */}
+                <div
+                    className="w-full max-w-xl mb-12 relative"
+                    onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setSearchFocused(false); }}
+                    onKeyDown={(e) => { if (e.key === 'Escape') setSearchFocused(false); }}
+                >
                     <div className="relative">
                         <input
                             type="text"
                             value={query}
-                            onChange={(e) => setQuery(e.target.value)}
+                            onChange={(e) => { setQuery(e.target.value); setSearchFocused(true); }}
                             onFocus={() => { setSearchFocused(true); setSearchOpened(true); }}
-                            onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
                             placeholder={copy('dashboard.search_placeholder')}
+                            aria-label={copy('dashboard.search_placeholder')}
                             className="w-full px-6 py-4 pl-12 bg-white/80 backdrop-blur-sm border border-clay/30 rounded-full focus:outline-none focus:ring-2 focus:ring-sage/50 text-text-dark"
                         />
                         <svg
@@ -182,7 +187,7 @@ const DashboardPage = () => {
                                         to={r.link}
                                         onMouseDown={(e) => e.preventDefault()}
                                         onClick={() => setQuery('')}
-                                        className="flex items-center justify-between gap-3 px-5 py-3 hover:bg-bone/70 transition-colors border-b border-clay/10 last:border-0"
+                                        className="flex items-center justify-between gap-3 px-5 py-3 hover:bg-bone/70 focus-visible:bg-bone/70 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sage transition-colors border-b border-clay/10 last:border-0"
                                     >
                                         <span className="min-w-0">
                                             <span className="block text-text-dark text-sm truncate">{r.label}</span>

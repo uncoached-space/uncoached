@@ -9,7 +9,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src={import.meta.env.BASE_URL + "bg/S1 Hero Section.webp"}
-                    alt="Background"
+                    alt=""
                     className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40"></div>

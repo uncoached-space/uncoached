@@ -69,7 +69,7 @@ const ServicesSection = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src={import.meta.env.BASE_URL + "bg/S4_ What You'll Find Inside - homepage.webp"}
-                    alt="Background"
+                    alt=""
                     className="w-full h-full object-cover"
                 />
                 {/* Soft wash: keeps the photograph as texture while making sure
@@ -95,13 +95,15 @@ const ServicesSection = () => {
                     {/* Navigation Arrows */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 bg-white/50 hover:bg-white rounded-full flex items-center justify-center text-sage shadow-md backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 lg:-translate-x-12"
+                        aria-label="Previous resources"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 bg-white/50 hover:bg-white rounded-full flex items-center justify-center text-sage shadow-md backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100 lg:-translate-x-12"
                     >
                         ←
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-10 h-10 bg-white/50 hover:bg-white rounded-full flex items-center justify-center text-sage shadow-md backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 lg:translate-x-12"
+                        aria-label="Next resources"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-10 h-10 bg-white/50 hover:bg-white rounded-full flex items-center justify-center text-sage shadow-md backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100 lg:translate-x-12"
                     >
                         →
                     </button>
@@ -134,6 +136,8 @@ const ServicesSection = () => {
                             <button
                                 key={index}
                                 onClick={() => setCurrentSlide(index)}
+                                aria-label={`Show resources, page ${index + 1} of ${totalSlides}`}
+                                aria-current={index === currentSlide ? 'true' : undefined}
                                 className={`w-2 h-2 rounded-full transition-all ${index === currentSlide ? 'bg-sage' : 'bg-clay'
                                     }`}
                             />
