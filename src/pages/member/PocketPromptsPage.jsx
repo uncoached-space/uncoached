@@ -3,6 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../context/AuthContext';
 import { useCopy } from '../../context/SiteCopyContext';
+import { emphasise } from '../../lib/emphasise';
+
+const cardHeading = 'font-bold text-text-dark mb-3 flex items-center gap-2 uppercase tracking-wide text-[15px]';
 
 const PocketPromptsPage = () => {
     const { user } = useAuth();
@@ -296,34 +299,50 @@ const PocketPromptsPage = () => {
                                             </div>
 
                                             {/* Metadata Sections */}
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-bone/50 p-5 rounded-xl border border-clay/20">
-                                                <div>
-                                                    <h4 className="font-bold text-text-dark mb-3 flex items-center gap-2">
-                                                        <span>🕰️</span> {copy('prompts.card.when_to_use')}
-                                                    </h4>
-                                                    <ul className="text-sm text-text-muted space-y-2 list-none pl-1">
-                                                        {prompt.when_to_use?.split('\n').filter(Boolean).map((line, i) => (
-                                                            <li key={i} className="flex items-start gap-2">
-                                                                <span className="text-sage mt-0.5">•</span>
-                                                                <span>{line.replace(/^•\s*/, '')}</span>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 bg-bone/50 p-5 rounded-xl border border-clay/20 md:divide-x divide-clay/30">
+                                                <div className="md:pr-6 divide-y divide-clay/30">
+                                                    <div className="py-5 first:pt-0 last:pb-0">
+                                                        <h4 className={cardHeading}>
+                                                            <span>🕰️</span> {copy('prompts.card.when_to_use')}
+                                                        </h4>
+                                                        <ul className="text-sm text-text-muted space-y-2 list-none pl-1">
+                                                            {prompt.when_to_use?.split('\n').filter(Boolean).map((line, i) => (
+                                                                <li key={i} className="flex items-start gap-2">
+                                                                    <span className="text-sage mt-0.5">•</span>
+                                                                    <span>{line.replace(/^•\s*/, '')}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                    {prompt.example_scenario?.trim() && (
+                                                        <div className="py-5 first:pt-0 last:pb-0">
+                                                            <h4 className={cardHeading}>
+                                                                <span>💬</span> {copy('prompts.card.example')}
+                                                            </h4>
+                                                            <p className="text-sm text-text-muted italic whitespace-pre-line">{prompt.example_scenario}</p>
+                                                        </div>
+                                                    )}
                                                 </div>
 
-                                                <div className="space-y-4">
-                                                    <div>
-                                                        <h4 className="font-bold text-text-dark mb-1 flex items-center gap-2">
+                                                <div className="mt-5 pt-5 border-t border-clay/30 md:mt-0 md:pt-0 md:border-t-0 md:pl-6 divide-y divide-clay/30">
+                                                    <div className="py-5 first:pt-0 last:pb-0">
+                                                        <h4 className={cardHeading}>
                                                             <span>🎯</span> {copy('prompts.card.purpose')}
                                                         </h4>
-                                                        <p className="text-sm text-text-muted">{prompt.purpose}</p>
+                                                        <p className="text-sm text-text-muted whitespace-pre-line">{prompt.purpose}</p>
                                                     </div>
-                                                    <div>
-                                                        <h4 className="font-bold text-text-dark mb-1 flex items-center gap-2">
-                                                            <span>💬</span> {copy('prompts.card.example')}
-                                                        </h4>
-                                                        <p className="text-sm text-text-muted italic">"{prompt.example_scenario}"</p>
-                                                    </div>
+                                                    {prompt.acknowledgement?.trim() && (
+                                                        <div className="py-5 first:pt-0 last:pb-0">
+                                                            <h4 className={cardHeading}>
+                                                                <span>📖</span> {copy('prompts.card.acknowledgement')}
+                                                            </h4>
+                                                            <div className="text-sm text-text-muted space-y-3">
+                                                                {prompt.acknowledgement.trim().split(/\n\s*\n/).map((para, i) => (
+                                                                    <p key={i} className="whitespace-pre-line">{emphasise(para.trim(), 'italic')}</p>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
 

@@ -16,6 +16,7 @@ const AdminPocketPromptsPage = () => {
         when_to_use: '',
         purpose: '',
         example_scenario: '',
+        acknowledgement: '',
         what_free_offers: '',
         what_premium_offers: '',
         content_free: '',
@@ -70,6 +71,7 @@ const AdminPocketPromptsPage = () => {
             when_to_use: prompt.when_to_use || '',
             purpose: prompt.purpose || '',
             example_scenario: prompt.example_scenario || '',
+            acknowledgement: prompt.acknowledgement || '',
             what_free_offers: prompt.what_free_offers || '',
             what_premium_offers: prompt.what_premium_offers || '',
             content_free: prompt.content_free || '',
@@ -88,6 +90,7 @@ const AdminPocketPromptsPage = () => {
             when_to_use: '',
             purpose: '',
             example_scenario: '',
+            acknowledgement: '',
             what_free_offers: '',
             what_premium_offers: '',
             content_free: '',
@@ -121,6 +124,7 @@ const AdminPocketPromptsPage = () => {
                 when_to_use: formData.when_to_use,
                 purpose: formData.purpose,
                 example_scenario: formData.example_scenario,
+                acknowledgement: formData.acknowledgement,
                 what_free_offers: formData.what_free_offers,
                 what_premium_offers: formData.what_premium_offers,
                 content_free: formData.content_free,
@@ -225,7 +229,7 @@ const AdminPocketPromptsPage = () => {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-text-dark mb-1">When to Use</label>
+                            <label className="block text-sm font-medium text-text-dark mb-1">Use This When</label>
                             <textarea
                                 rows="3"
                                 value={formData.when_to_use}
@@ -251,6 +255,18 @@ const AdminPocketPromptsPage = () => {
                                 className="w-full px-4 py-2 border border-text-dark/20 rounded-xl focus:ring-1 focus:ring-clay resize-y text-sm mb-4"
                                 placeholder="“My friend often drops by unannounced...”"
                             ></textarea>
+
+                            <label className="block text-sm font-medium text-text-dark mb-1">Acknowledgement</label>
+                            <textarea
+                                rows="4"
+                                value={formData.acknowledgement}
+                                onChange={(e) => setFormData({ ...formData, acknowledgement: e.target.value })}
+                                className="w-full px-4 py-2 border border-text-dark/20 rounded-xl focus:ring-1 focus:ring-clay resize-y text-sm mb-1"
+                                placeholder="*Paid prompt informed by: ...*"
+                            ></textarea>
+                            <p className="text-xs text-text-dark/50 mb-4">
+                                Optional. Leave it empty to hide the section. Press Enter twice to start a new paragraph. Put *stars* around a sentence to show it in italics.
+                            </p>
 
                             <div className="grid md:grid-cols-2 gap-6 mb-4">
                                 <div>

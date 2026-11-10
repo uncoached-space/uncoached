@@ -664,9 +664,10 @@ For privacy concerns, email us at hello@uncoached.space.`
 
     // ── Pocket Prompts Page · Prompt Cards ──────────────────────────────
     { key: 'prompts.card.uncategorized', group: 'Pocket Prompts Page — Prompt Cards', label: 'Tag for a prompt with no category', text: 'Uncategorized' },
-    { key: 'prompts.card.when_to_use', group: 'Pocket Prompts Page — Prompt Cards', label: '"When to use" heading', help: 'The emoji is added automatically.', text: 'When to Use' },
+    { key: 'prompts.card.when_to_use', group: 'Pocket Prompts Page — Prompt Cards', label: '"Use this when" heading', help: 'The emoji is added automatically.', text: 'Use This When' },
     { key: 'prompts.card.purpose', group: 'Pocket Prompts Page — Prompt Cards', label: '"Purpose" heading', help: 'The emoji is added automatically.', text: 'Purpose' },
     { key: 'prompts.card.example', group: 'Pocket Prompts Page — Prompt Cards', label: '"Example scenario" heading', help: 'The emoji is added automatically.', text: 'Example Scenario' },
+    { key: 'prompts.card.acknowledgement', group: 'Pocket Prompts Page — Prompt Cards', label: '"Acknowledgement" heading', help: 'The emoji is added automatically. The text itself is edited on each Pocket Prompt.', text: 'Acknowledgement' },
     { key: 'prompts.card.versions_title', group: 'Pocket Prompts Page — Prompt Cards', label: '"What each version does" heading', help: 'The emoji is added automatically.', text: 'What Each Version Does' },
     { key: 'prompts.card.free_title', group: 'Pocket Prompts Page — Prompt Cards', label: 'Free version box title', text: 'Free Version' },
     { key: 'prompts.card.premium_title', group: 'Pocket Prompts Page — Prompt Cards', label: 'High-level version box title', help: 'The star is added automatically.', text: 'High-Level Version' },

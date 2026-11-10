@@ -175,7 +175,7 @@ const AdminPocketPromptCategoriesPage = () => {
                                     className="w-full px-4 py-2 border border-text-dark/20 rounded-xl focus:outline-none focus:border-clay"
                                     placeholder="self-reflection"
                                 />
-                                <p className="text-xs text-text-dark/50 mt-1">Used in code to filter items.</p>
+                                <p className="text-xs text-text-dark/50 mt-1">An internal name only. Members never see it, and changing it does not affect prompts or purchases.</p>
                             </div>
                         </div>
 
