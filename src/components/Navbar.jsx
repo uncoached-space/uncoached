@@ -7,7 +7,10 @@ import { useCopy } from '../context/SiteCopyContext';
 const NAV_LINKS = [
     { copyKey: 'nav.link_home', to: '/' },
     { copyKey: 'nav.link_about', to: '/about' },
-    { copyKey: 'nav.link_practitioners', to: '/practitioners' },
+    // Practitioners is hidden from the menu while it holds sample profiles
+    // (Johanna, 10 Nov 2026). The page itself still opens at /practitioners so
+    // she can show it to practitioners. Put this line back when they are real:
+    // { copyKey: 'nav.link_practitioners', to: '/practitioners' },
     { copyKey: 'nav.link_gift', to: '/gift' },
     { copyKey: 'nav.link_contact', contact: true },
 ];
