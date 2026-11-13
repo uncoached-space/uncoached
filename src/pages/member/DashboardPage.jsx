@@ -12,7 +12,7 @@ const PORTAL_SECTIONS = [
     { label: 'Guided Shifts', type: 'Tool', link: '/dashboard/guided-shifts', keywords: 'reset state regulate' },
     { label: 'Pocket Prompts', type: 'Tool', link: '/dashboard/pocket-prompts', keywords: 'questions reflection' },
     { label: 'Clarity Cards', type: 'Tool', link: '/dashboard/clarity-cards', keywords: 'journal journaling cards' },
-    { label: 'Afformations', type: 'Tool', link: '/dashboard/afformations', keywords: 'affirmations affirmation questions' },
+    { label: 'Better Questions', type: 'Tool', link: '/dashboard/better-questions', keywords: 'afformations affirmations affirmation questions' },
     { label: 'Voice Notes', type: 'Tool', link: '/dashboard/voice-notes', keywords: 'audio messages identity' },
 ];
 
@@ -55,7 +55,7 @@ const DashboardPage = () => {
                 (cc.data || []).forEach(r => entries.push({ label: r.title, type: 'Clarity Card', link: `/dashboard/clarity-cards/${r.id}`, text: searchableText(r.description) }));
                 (pp.data || []).forEach(r => entries.push({ label: r.title, type: 'Pocket Prompt', link: '/dashboard/pocket-prompts', text: searchableText(r.when_to_use, r.purpose, r.example_scenario, r.what_free_offers, r.what_premium_offers, r.content_free) }));
                 (vn.data || []).forEach(r => entries.push({ label: r.title, type: 'Voice Note', link: '/dashboard/voice-notes', text: searchableText(r.description) }));
-                (af.data || []).forEach(r => entries.push({ label: r.title, type: 'Afformation', link: '/dashboard/afformations', text: searchableText(r.tags, (r.afformation_questions || []).map(q => q.text)) }));
+                (af.data || []).forEach(r => entries.push({ label: r.title, type: 'Better Question', link: '/dashboard/better-questions', text: searchableText(r.tags, (r.afformation_questions || []).map(q => q.text)) }));
             } catch (err) {
                 console.error('Search index build error:', err);
             }
@@ -78,7 +78,7 @@ const DashboardPage = () => {
         { n: 3, icon: 'images/Field Icons/field guided shift.webp', link: '/dashboard/guided-shifts', color: 'from-clay/20 to-clay/10' },
         { n: 4, icon: 'images/Field Icons/field pocket prompts.webp', link: '/dashboard/pocket-prompts', color: 'from-sage/20 to-sage/10' },
         { n: 5, icon: 'images/Field Icons/field clarity cards.webp', link: '/dashboard/clarity-cards', color: 'from-golden/20 to-golden/10' },
-        { n: 6, icon: 'images/Field Icons/field affirmation.webp', link: '/dashboard/afformations', color: 'from-clay/20 to-clay/10' },
+        { n: 6, icon: 'images/Field Icons/field affirmation.webp', link: '/dashboard/better-questions', color: 'from-clay/20 to-clay/10' },
     ].map((c) => ({
         ...c,
         title: emphasise(copy(`member.card${c.n}_title`), 'italic text-sage font-serif'),

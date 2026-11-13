@@ -161,8 +161,12 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* Afformations was renamed Better Questions (Nov 2026). The old
+              address still works, so saved links and bookmarks don't break. */}
+          <Route path="/dashboard/afformations" element={<Navigate to="/dashboard/better-questions" replace />} />
+          <Route path="/dashboard/betterquestions" element={<Navigate to="/dashboard/better-questions" replace />} />
           <Route
-            path="/dashboard/afformations"
+            path="/dashboard/better-questions"
             element={
               <ProtectedRoute requireSubscription={true}>
                 <AfformationsPage />

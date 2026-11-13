@@ -136,8 +136,8 @@ const AdminAffirmationCategoriesPage = () => {
         <div className="p-8 max-w-5xl mx-auto">
             <div className="flex justify-between items-center mb-8">
                 <div>
-                    <h1 className="font-display text-4xl text-text-dark mb-2">Afformation Categories</h1>
-                    <p className="text-text-dark/70">Manage the thematic folders for Afformations.</p>
+                    <h1 className="font-display text-4xl text-text-dark mb-2">Better Questions Categories</h1>
+                    <p className="text-text-dark/70">Manage the thematic folders for Better Questions.</p>
                 </div>
                 {!isEditing && (
                     <button

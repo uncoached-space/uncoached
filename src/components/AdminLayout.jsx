@@ -174,7 +174,7 @@ const AdminLayout = () => {
                         </Link>
                     </div>
 
-                    {/* Afformations (Flat link) */}
+                    {/* Better Questions, formerly Afformations (Flat link) */}
                     <div className="space-y-1">
                         <Link
                             to="/admin/afformations"
@@ -183,7 +183,7 @@ const AdminLayout = () => {
                                 : 'text-text-dark/70 hover:bg-clay/10 hover:text-text-dark'
                                 }`}
                         >
-                            Afformations
+                            Better Questions
                         </Link>
                     </div>
 

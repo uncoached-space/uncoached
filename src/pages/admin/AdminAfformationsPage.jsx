@@ -102,14 +102,14 @@ const AdminAfformationsPage = () => {
     return (
         <div className="max-w-4xl">
             <div className="flex items-center justify-between mb-2">
-                <h1 className="font-display text-4xl text-text-dark">Afformations</h1>
+                <h1 className="font-display text-4xl text-text-dark">Better Questions</h1>
                 <button onClick={addCard} className="px-5 py-2.5 bg-clay text-white font-medium rounded-xl hover:bg-clay/90 transition-colors shadow-sm">
                     + Add card
                 </button>
             </div>
             <p className="text-text-dark/70 mb-6">
                 Each card is a moment (its title), with tags for the filter chips and a list of questions.
-                These are exactly what members see on the Afformations page.
+                These are exactly what members see on the Better Questions page.
             </p>
 
             {message && <div className="mb-4 p-3 rounded-xl bg-sage/10 text-sage text-sm">{message}</div>}

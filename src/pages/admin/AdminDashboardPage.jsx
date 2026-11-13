@@ -145,7 +145,7 @@ const AdminDashboardPage = () => {
                 { name: 'Audio Breaths', count: newStats.audioBreaths.total, fill: '#C89A5B' },
                 { name: 'Pocket Prompts', count: newStats.pocketPrompts.total, fill: '#D6C7B8' },
                 { name: 'Clarity Cards', count: newStats.clarityCards.total, fill: '#8F6A3D' },
-                { name: 'Afformations', count: newStats.afformations.total, fill: '#5E6A65' },
+                { name: 'Better Questions', count: newStats.afformations.total, fill: '#5E6A65' },
                 { name: 'Voice Notes', count: newStats.voiceNotes.total, fill: '#8C857A' },
             ]);
 
@@ -212,7 +212,7 @@ const AdminDashboardPage = () => {
             accent: '#5E6A65',
         },
         {
-            name: 'Afformations',
+            name: 'Better Questions',
             icon: 'field affirmation.png',
             total: stats.afformations.total,
             subtitle: `${stats.afformations.categories} questions`,
