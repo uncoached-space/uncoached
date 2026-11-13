@@ -78,7 +78,7 @@ const DashboardPage = () => {
         { n: 3, icon: 'images/Field Icons/field guided shift.webp', link: '/dashboard/guided-shifts', color: 'from-clay/20 to-clay/10' },
         { n: 4, icon: 'images/Field Icons/field pocket prompts.webp', link: '/dashboard/pocket-prompts', color: 'from-sage/20 to-sage/10' },
         { n: 5, icon: 'images/Field Icons/field clarity cards.webp', link: '/dashboard/clarity-cards', color: 'from-golden/20 to-golden/10' },
-        { n: 6, icon: 'images/Field Icons/field affirmation.webp', link: '/dashboard/better-questions', color: 'from-clay/20 to-clay/10' },
+        { n: 6, icon: 'images/Field Icons/field better questions.webp', link: '/dashboard/better-questions', color: 'from-clay/20 to-clay/10' },
     ].map((c) => ({
         ...c,
         title: emphasise(copy(`member.card${c.n}_title`), 'italic text-sage font-serif'),
@@ -113,7 +113,13 @@ const DashboardPage = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 flex flex-col items-center pt-32 pb-24 px-6 md:pt-48">
+            <div className="relative z-10 flex flex-col items-center pt-12 pb-24 px-6 md:pt-20">
+
+                <img
+                    src={import.meta.env.BASE_URL + 'logo/logouncoached.webp'}
+                    alt="Uncoached"
+                    className="h-28 md:h-32 w-auto mb-2"
+                />
 
                 {/* Profile Avatar / Link */}
                 <Link to="/dashboard/profile" className="mb-6 group relative">

@@ -213,7 +213,7 @@ const AdminDashboardPage = () => {
         },
         {
             name: 'Better Questions',
-            icon: 'field affirmation.png',
+            icon: 'field better questions.png',
             total: stats.afformations.total,
             subtitle: `${stats.afformations.categories} questions`,
             link: '/admin/afformations',
