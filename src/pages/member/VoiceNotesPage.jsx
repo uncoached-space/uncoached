@@ -187,10 +187,10 @@ const VoiceNotesPage = () => {
 
                                             {/* Info */}
                                             <div className="flex-1 min-w-0">
-                                                <h3 className="font-serif text-[18px] md:text-[20px] text-[#1F2422] font-medium truncate">
+                                                <h3 className="font-serif text-[18px] md:text-[20px] text-[#1F2422] font-medium leading-snug">
                                                     {note.title}
                                                 </h3>
-                                                <p className="text-[#5E6A65] text-[14px] truncate mt-1">
+                                                <p className="text-[#5E6A65] text-[14px] leading-relaxed whitespace-pre-line mt-1">
                                                     {note.description}
                                                 </p>
 
