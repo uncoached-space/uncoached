@@ -11,50 +11,23 @@ const PricingPage = () => {
     const { user, loading: authLoading } = useAuth();
     const navigate = useNavigate();
 
+    // The wording comes from Website Text > Pricing. The prices themselves stay
+    // here, next to the Stripe price they belong to, so the amount shown can
+    // never drift from the amount charged.
+    const lines = (key) => copy(key).split('\n').map((l) => l.trim()).filter(Boolean);
     const plans = [
-        {
-            id: 'monthly',
-            name: 'Monthly',
-            price: '$22',
-            period: '/month',
-            priceId: import.meta.env.VITE_STRIPE_MONTHLY_PRICE_ID,
-            description: 'Explore Uncoached at your own pace',
-            cta: 'Start monthly',
-            features: ['No long-term commitment', 'Cancel any time']
-        },
-        {
-            id: 'quarterly',
-            name: '3 Months',
-            price: '$62',
-            period: '/3 months',
-            priceId: import.meta.env.VITE_STRIPE_QUARTERLY_PRICE_ID,
-            description: 'Save $12',
-            cta: 'Choose 3 months',
-            features: ['Begin forming natural habits of checking in', 'Feel it working in real moments, not just in theory']
-        },
-        {
-            id: 'biannual',
-            name: '6 Months',
-            price: '$120',
-            period: '/6 months',
-            priceId: import.meta.env.VITE_STRIPE_BIANNUAL_PRICE_ID,
-            description: 'Save $36',
-            cta: 'Choose 6 months',
-            popular: true,
-            badge: 'Most Chosen',
-            features: ['Nervous system familiarity', 'Ideal for between-session care']
-        },
-        {
-            id: 'annual',
-            name: 'Annual',
-            price: '$220',
-            period: '/year',
-            priceId: import.meta.env.VITE_STRIPE_ANNUAL_PRICE_ID,
-            description: '2 months free',
-            cta: 'Choose annual',
-            features: ['Long-term nervous system support', 'For when this becomes part of life']
-        }
-    ];
+        { id: 'monthly', price: '$22', period: '/month', priceId: import.meta.env.VITE_STRIPE_MONTHLY_PRICE_ID },
+        { id: 'quarterly', price: '$62', period: '/3 months', priceId: import.meta.env.VITE_STRIPE_QUARTERLY_PRICE_ID },
+        { id: 'biannual', price: '$120', period: '/6 months', priceId: import.meta.env.VITE_STRIPE_BIANNUAL_PRICE_ID, popular: true },
+        { id: 'annual', price: '$220', period: '/year', priceId: import.meta.env.VITE_STRIPE_ANNUAL_PRICE_ID },
+    ].map((plan, i) => ({
+        ...plan,
+        name: copy(`pricing.plan${i + 1}_name`),
+        description: copy(`pricing.plan${i + 1}_note`),
+        cta: copy(`pricing.plan${i + 1}_cta`),
+        badge: copy(`pricing.plan${i + 1}_badge`).trim(),
+        features: lines(`pricing.plan${i + 1}_features`),
+    }));
 
     const handleSelectPlan = async (plan) => {
         // Debug logging
@@ -155,11 +128,6 @@ const PricingPage = () => {
                                         {plan.period}
                                     </span>
                                 </div>
-                                {plan.perMonth && (
-                                    <p className="text-sage text-sm mt-1 font-medium">
-                                        {plan.perMonth}
-                                    </p>
-                                )}
                                 <p className="text-text-muted text-sm mt-2">
                                     {plan.description}
                                 </p>
@@ -167,11 +135,11 @@ const PricingPage = () => {
 
                             <ul className="space-y-3 mb-8">
                                 {plan.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-center gap-2 text-text-muted text-sm">
+                                    <li key={idx} className="flex items-start gap-2 text-text-muted text-sm">
                                         <svg className="w-5 h-5 text-sage flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
-                                        {feature}
+                                        <span>{feature}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -199,27 +167,20 @@ const PricingPage = () => {
                 <div className="max-w-2xl mx-auto space-y-4 mb-12">
                     <details className="group bg-white rounded-2xl border border-clay/30 overflow-hidden">
                         <summary className="flex items-center justify-between cursor-pointer list-none px-6 py-5 font-display text-lg text-text-dark">
-                            What's included
+                            {copy('pricing.included_title')}
                             <span className="material-symbols-outlined text-text-muted transition-transform group-open:rotate-180">
                                 expand_more
                             </span>
                         </summary>
                         <div className="px-6 pb-6 text-text-muted text-sm">
-                            <p className="mb-3">All plans include full access to:</p>
+                            <p className="mb-3">{copy('pricing.included_intro')}</p>
                             <ul className="space-y-2">
-                                {[
-                                    'Field, your reflective AI companion',
-                                    'Audio Breaths and Guided Shifts for real-life moments',
-                                    'Voice notes and afformations for steady support',
-                                    'Clarity cards and integration tools',
-                                    'Prompt library',
-                                    'Everything added to Uncoached over time',
-                                ].map((item) => (
+                                {lines('pricing.included_list').map((item) => (
                                     <li key={item} className="flex items-start gap-2">
                                         <svg className="w-5 h-5 text-sage flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
-                                        {item}
+                                        <span>{item}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -228,16 +189,13 @@ const PricingPage = () => {
 
                     <details className="group bg-white rounded-2xl border border-clay/30 overflow-hidden">
                         <summary className="flex items-center justify-between cursor-pointer list-none px-6 py-5 font-display text-lg text-text-dark">
-                            Optional extras
+                            {copy('pricing.extras_title')}
                             <span className="material-symbols-outlined text-text-muted transition-transform group-open:rotate-180">
                                 expand_more
                             </span>
                         </summary>
                         <div className="px-6 pb-6 text-text-muted text-sm leading-relaxed">
-                            Some tools inside Uncoached may be available as optional, one-time
-                            purchases. These are designed as deeper dives or seasonal supports and
-                            are always optional. Your membership gives you the core space. Extras
-                            are there if and when you want more.
+                            {copy('pricing.extras_body')}
                         </div>
                     </details>
                 </div>
@@ -251,7 +209,7 @@ const PricingPage = () => {
                         {copy('pricing.closing')}
                     </p>
                     <p className="text-text-muted text-sm">
-                        Secure payment powered by Stripe. Cancel anytime.
+                        {copy('pricing.secure_note')}
                     </p>
                     <p className="text-text-muted text-sm mt-4">
                         <Link to="/redeem" className="text-sage hover:underline">
@@ -260,9 +218,9 @@ const PricingPage = () => {
                     </p>
                     {!user && (
                         <p className="text-text-muted text-sm mt-4">
-                            Already have an account?{' '}
+                            {copy('pricing.signin_prompt')}{' '}
                             <Link to="/signin" className="text-sage hover:underline">
-                                Sign in
+                                {copy('pricing.signin_link')}
                             </Link>
                         </p>
                     )}

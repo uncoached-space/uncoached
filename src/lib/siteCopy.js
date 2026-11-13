@@ -66,7 +66,7 @@ export const SITE_COPY_FIELDS = [
     { key: 'home.services.card4_body', group: "Home — What You'll Find Inside", label: 'Card 4 text', multiline: true, text: "Structured prompt experiences that guide reflection and next steps, helping insight turn into real change over time." },
     { key: 'home.services.card5_title', group: "Home — What You'll Find Inside", label: 'Card 5 title', text: "Guided Shifts" },
     { key: 'home.services.card5_body', group: "Home — What You'll Find Inside", label: 'Card 5 text', multiline: true, text: "Short, guided experiences that help you reset your state and reconnect with yourself in the moment." },
-    { key: 'home.services.card6_title', group: "Home — What You'll Find Inside", label: 'Card 6 title', help: 'Anything between *stars* shows in sage italic.', text: "Af*for*mations" },
+    { key: 'home.services.card6_title', group: "Home — What You'll Find Inside", label: 'Card 6 title', help: 'Anything between *stars* shows in sage italic.', text: "Better Questions" },
     { key: 'home.services.card6_body', group: "Home — What You'll Find Inside", label: 'Card 6 text', multiline: true, text: "Empowering questions to ask yourself, designed to guide your brain toward supportive answers." },
     { key: 'home.services.card7_title', group: "Home — What You'll Find Inside", label: 'Card 7 title', text: "Grounding Voice Notes" },
     { key: 'home.services.card7_body', group: "Home — What You'll Find Inside", label: 'Card 7 text', multiline: true, text: "Brief, supportive voice notes offering gentle reminders of who you are in moments when you need steadiness, encouragement, or perspective." },
@@ -328,6 +328,38 @@ For privacy concerns, email us at hello@uncoached.space.`
     { key: 'pricing.closing', group: 'Pricing', label: 'Closing statement', multiline: true, text: "You don't need to fix yourself. You just need a place to stay connected to yourself." },
     { key: 'pricing.gift_link', group: 'Pricing', label: 'Gift card link (bottom of page)', text: 'Have a gift card? Redeem it here' },
 
+    // Pricing · the four price cards. The prices are not here on purpose: they
+    // are tied to Stripe, so they are changed in code together with Stripe.
+    { key: 'pricing.plan1_name', group: 'Pricing — Price Cards', label: 'Card 1 ($22/month): plan name', text: "Monthly" },
+    { key: 'pricing.plan1_note', group: 'Pricing — Price Cards', label: 'Card 1 ($22/month): line under the price', text: "Explore Uncoached at your own pace" },
+    { key: 'pricing.plan1_features', group: 'Pricing — Price Cards', label: 'Card 1 ($22/month): ticked list', multiline: true, list: true, rows: 3, help: 'One item per line.', text: "No long-term commitment\nCancel any time" },
+    { key: 'pricing.plan1_cta', group: 'Pricing — Price Cards', label: 'Card 1 ($22/month): button', text: "Start monthly" },
+    { key: 'pricing.plan1_badge', group: 'Pricing — Price Cards', label: 'Card 1 ($22/month): badge on top of the card', help: 'Leave empty for no badge.', text: "" },
+    { key: 'pricing.plan2_name', group: 'Pricing — Price Cards', label: 'Card 2 ($62/3 months): plan name', text: "3 Months" },
+    { key: 'pricing.plan2_note', group: 'Pricing — Price Cards', label: 'Card 2 ($62/3 months): line under the price', text: "Save $12" },
+    { key: 'pricing.plan2_features', group: 'Pricing — Price Cards', label: 'Card 2 ($62/3 months): ticked list', multiline: true, list: true, rows: 3, help: 'One item per line.', text: "Begin forming natural habits of checking in\nFeel it working in real moments, not just in theory" },
+    { key: 'pricing.plan2_cta', group: 'Pricing — Price Cards', label: 'Card 2 ($62/3 months): button', text: "Choose 3 months" },
+    { key: 'pricing.plan2_badge', group: 'Pricing — Price Cards', label: 'Card 2 ($62/3 months): badge on top of the card', help: 'Leave empty for no badge.', text: "" },
+    { key: 'pricing.plan3_name', group: 'Pricing — Price Cards', label: 'Card 3 ($120/6 months): plan name', text: "6 Months" },
+    { key: 'pricing.plan3_note', group: 'Pricing — Price Cards', label: 'Card 3 ($120/6 months): line under the price', text: "Save $36" },
+    { key: 'pricing.plan3_features', group: 'Pricing — Price Cards', label: 'Card 3 ($120/6 months): ticked list', multiline: true, list: true, rows: 3, help: 'One item per line.', text: "Nervous system familiarity\nIdeal for between-session care" },
+    { key: 'pricing.plan3_cta', group: 'Pricing — Price Cards', label: 'Card 3 ($120/6 months): button', text: "Choose 6 months" },
+    { key: 'pricing.plan3_badge', group: 'Pricing — Price Cards', label: 'Card 3 ($120/6 months): badge on top of the card', help: 'Leave empty for no badge.', text: "Most Chosen" },
+    { key: 'pricing.plan4_name', group: 'Pricing — Price Cards', label: 'Card 4 ($220/year): plan name', text: "Annual" },
+    { key: 'pricing.plan4_note', group: 'Pricing — Price Cards', label: 'Card 4 ($220/year): line under the price', text: "2 months free" },
+    { key: 'pricing.plan4_features', group: 'Pricing — Price Cards', label: 'Card 4 ($220/year): ticked list', multiline: true, list: true, rows: 3, help: 'One item per line.', text: "Long-term nervous system support\nFor when this becomes part of life" },
+    { key: 'pricing.plan4_cta', group: 'Pricing — Price Cards', label: 'Card 4 ($220/year): button', text: "Choose annual" },
+    { key: 'pricing.plan4_badge', group: 'Pricing — Price Cards', label: 'Card 4 ($220/year): badge on top of the card', help: 'Leave empty for no badge.', text: "" },
+
+    { key: 'pricing.included_title', group: "Pricing — What’s Included", label: 'Dropdown title', text: "What's included" },
+    { key: 'pricing.included_intro', group: "Pricing — What’s Included", label: 'Line above the list', text: 'All plans include full access to:' },
+    { key: 'pricing.included_list', group: "Pricing — What’s Included", label: 'Ticked list', multiline: true, list: true, rows: 6, help: 'One item per line.', text: "Field, your reflective AI companion\nAudio Breaths and Guided Shifts for real-life moments\nVoice Notes and Better Questions for steady support\nClarity cards and integration tools\nPrompt library\nEverything added to Uncoached over time" },
+    { key: 'pricing.extras_title', group: "Pricing — Optional Extras", label: 'Dropdown title', text: 'Optional extras' },
+    { key: 'pricing.extras_body', group: "Pricing — Optional Extras", label: 'Paragraph', multiline: true, rows: 4, text: "Some tools inside Uncoached may be available as optional, one-time purchases. These are designed as deeper dives or seasonal supports and are always optional. Your membership gives you the core space. Extras are there if and when you want more." },
+    { key: 'pricing.secure_note', group: "Pricing — Bottom Of Page", label: 'Payment note', text: 'Secure payment powered by Stripe. Cancel anytime.' },
+    { key: 'pricing.signin_prompt', group: "Pricing — Bottom Of Page", label: 'Sign-in line (shown to visitors who are not signed in)', text: 'Already have an account?' },
+    { key: 'pricing.signin_link', group: "Pricing — Bottom Of Page", label: 'Sign-in link text', text: 'Sign in' },
+
     // ── Redeem a Gift Card ──────────────────────────────────────────────
     { key: 'redeem.title', group: 'Redeem a Gift Card', label: 'Page heading', text: 'Redeem your gift card' },
     { key: 'redeem.subtitle', group: 'Redeem a Gift Card', label: 'Subheading', text: 'Enter the code from your gift card email and your membership begins today.' },
@@ -511,7 +543,7 @@ For privacy concerns, email us at hello@uncoached.space.`
     { key: 'member.card4_body', group: 'Members Area — Dashboard Cards', label: 'Card 4 text', multiline: true, text: "Clarity through questions." },
     { key: 'member.card5_title', group: 'Members Area — Dashboard Cards', label: 'Card 5 title', text: "Clarity Cards" },
     { key: 'member.card5_body', group: 'Members Area — Dashboard Cards', label: 'Card 5 text', multiline: true, text: "Work it out on paper." },
-    { key: 'member.card6_title', group: 'Members Area — Dashboard Cards', label: 'Card 6 title', help: 'Anything between *stars* shows in sage italic.', text: "Af*for*mations" },
+    { key: 'member.card6_title', group: 'Members Area — Dashboard Cards', label: 'Card 6 title', help: 'Anything between *stars* shows in sage italic.', text: "Better Questions" },
     { key: 'member.card6_body', group: 'Members Area — Dashboard Cards', label: 'Card 6 text', multiline: true, text: "Generate a positive response in your mind." },
     { key: 'member.card7_title', group: 'Members Area — Dashboard Cards', label: 'Card 7 title', text: "Voice Notes" },
     { key: 'member.card7_body', group: 'Members Area — Dashboard Cards', label: 'Card 7 text', multiline: true, text: "Remember who you are." },
@@ -642,15 +674,15 @@ For privacy concerns, email us at hello@uncoached.space.`
     { key: 'fieldpage.chat.come_back', group: 'Field Page — Below the Chat', label: 'Line under the chat', text: "You can come back whenever you're ready." },
     { key: 'fieldpage.chat.disclaimer', group: 'Field Page — Below the Chat', label: 'Small italic note', multiline: true, text: 'Field is an AI-powered companion designed to support self-led reflection, not replace human care.' },
 
-    // ── Afformations Page · Hero ────────────────────────────────────────
-    { key: 'afformations.hero.back', group: 'Afformations Page — Hero', label: 'Back link', help: 'The arrow is added automatically.', text: 'Back to Portal' },
-    { key: 'afformations.hero.title', group: 'Afformations Page — Hero', label: 'Headline', help: 'Anything between *stars* is emphasised.', text: 'Af*for*mations' },
-    { key: 'afformations.hero.subtitle', group: 'Afformations Page — Hero', label: 'Subheadline', multiline: true, text: 'Afformations are empowering questions you ask yourself, designed to guide your brain toward supportive answers.' },
-    { key: 'afformations.hero.body', group: 'Afformations Page — Hero', label: 'Paragraph', multiline: true, rows: 5, text: 'When the brain hears a question, it naturally begins searching for an answer. This simple shift invites your mind to notice evidence that supports growth, possibility, and self-trust. Instead of forcing yourself to believe something new, afformations gently guide your brain to explore the possibility that the belief may already be true. Over time, these small questions reshape what your mind pays attention to, helping you build new patterns of thinking and identity.' },
-    { key: 'afformations.hero.invitation', group: 'Afformations Page — Hero', label: 'Italic closing line', multiline: true, text: 'Sit with one of these questions for a moment and notice what answers your mind begins to offer.' },
+    // ── Better Questions Page · Hero ────────────────────────────────────────
+    { key: 'afformations.hero.back', group: 'Better Questions Page — Hero', label: 'Back link', help: 'The arrow is added automatically.', text: 'Back to Portal' },
+    { key: 'afformations.hero.title', group: 'Better Questions Page — Hero', label: 'Headline', help: 'Anything between *stars* is emphasised.', text: 'Better Questions' },
+    { key: 'afformations.hero.subtitle', group: 'Better Questions Page — Hero', label: 'Subheadline', multiline: true, text: 'Afformations are empowering questions you ask yourself, designed to guide your brain toward supportive answers.' },
+    { key: 'afformations.hero.body', group: 'Better Questions Page — Hero', label: 'Paragraph', multiline: true, rows: 5, text: 'When the brain hears a question, it naturally begins searching for an answer. This simple shift invites your mind to notice evidence that supports growth, possibility, and self-trust. Instead of forcing yourself to believe something new, afformations gently guide your brain to explore the possibility that the belief may already be true. Over time, these small questions reshape what your mind pays attention to, helping you build new patterns of thinking and identity.' },
+    { key: 'afformations.hero.invitation', group: 'Better Questions Page — Hero', label: 'Italic closing line', multiline: true, text: 'Sit with one of these questions for a moment and notice what answers your mind begins to offer.' },
 
-    // ── Afformations Page · Filters ─────────────────────────────────────
-    { key: 'afformations.filters.all', group: 'Afformations Page — Filters', label: '"Show everything" filter button', help: 'The other filter buttons come from the card tags.', text: 'All' },
+    // ── Better Questions Page · Filters ─────────────────────────────────────
+    { key: 'afformations.filters.all', group: 'Better Questions Page — Filters', label: '"Show everything" filter button', help: 'The other filter buttons come from the card tags.', text: 'All' },
 
     // ── Pocket Prompts Page · Intro ─────────────────────────────────────
     { key: 'prompts.back', group: 'Pocket Prompts Page — Intro', label: 'Back link (top left)', help: 'The arrow is added automatically.', text: 'Back to Portal' },
