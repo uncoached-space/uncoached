@@ -323,7 +323,7 @@ For privacy concerns, email us at hello@uncoached.space.`
     // ── Pricing ─────────────────────────────────────────────────────────
     { key: 'pricing.title', group: 'Pricing', label: 'Page heading', text: 'Choose your path' },
     { key: 'pricing.subtitle', group: 'Pricing', label: 'Subheading', text: "There's no right pace. Take what you need." },
-    { key: 'pricing.universal', group: 'Pricing', label: 'Line above the dropdowns', text: "There's no right pace. Take what you need." },
+    { key: 'pricing.universal', group: 'Pricing', label: 'Line above the dropdowns', multiline: true, text: "There's no right pace. Take what you need." },
     { key: 'pricing.disclaimer', group: 'Pricing', label: 'Disclaimer', multiline: true, text: "Uncoached is not therapy or coaching. It's a self-guided space designed to support awareness, regulation, and integration in everyday life. All memberships renew automatically at the end of each billing period. You can cancel at any time before renewal to stop future charges. There's no right pace. Stay for a moment, or make it a rhythm." },
     { key: 'pricing.closing', group: 'Pricing', label: 'Closing statement', multiline: true, text: "You don't need to fix yourself. You just need a place to stay connected to yourself." },
     { key: 'pricing.gift_link', group: 'Pricing', label: 'Gift card link (bottom of page)', text: 'Have a gift card? Redeem it here' },
